@@ -1,0 +1,8 @@
+[user]
+	signingkey = CCF21E1A1D8A8EDC
+	name = Travis F. Collins
+	email = travis.collins@analog.com
+[core]
+        editor = vim
+[commit]
+	gpgsign = true
