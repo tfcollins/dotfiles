@@ -30,6 +30,7 @@ alias chsx='git clone git@github.com:analogdevicesinc/HighSpeedConverterToolbox.
 alias chdl='git clone git@github.com:analogdevicesinc/hdl.git'
 alias clinux='git clone git@github.com:analogdevicesinc/linux.git'
 alias cpyadi='git clone git@github.com:analogdevicesinc/pyadi-iio.git'
+alias cgriio='git clone git@github.com:analogdevicesinc/gr-iio.git'
 # Tab complete commands
 autoload -U compinit
 zstyle ':completion:*' menu select
