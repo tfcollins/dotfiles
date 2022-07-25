@@ -2,6 +2,10 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Travis Alias's
+alias git-c-squash='git commit --fixup=`git rev-parse HEAD` ; git rebase HEAD~2 -i --autosquash'
+
+alias sshanalog='function _ssh () { sshpass -p analog ssh root@"$1"; };_ssh'
+
 alias iioscan='iio_attr -u ip:analog -C'
 alias gitsub='git submodule update --init --recursive'
 alias iioex='export PYTHONPATH=$PYTHONPATH:"/usr/lib/python2.7/site-packages/"'
@@ -13,6 +17,7 @@ alias vs2017_4='source /opt/Xilinx/Vivado/2017.4/settings64.sh'
 alias vs2018_2='source /opt/Xilinx/Vivado/2018.2/settings64.sh'
 alias vs2018_3='source /opt/Xilinx/Vivado/2018.3/settings64.sh'
 alias vs2019_1='source /opt/Xilinx/Vivado/2019.1/settings64.sh'
+alias vs2021_1='source /opt/Xilinx/Vivado/2021.1/settings64.sh'
 alias matlab2016b='/usr/local/MATLAB/R2016b/bin/matlab'
 alias matlab2017a='/usr/local/MATLAB/R2017a/bin/matlab'
 alias matlab2017b='/usr/local/MATLAB/R2017b/bin/matlab'
@@ -21,6 +26,10 @@ alias matlab2018b='/usr/local/MATLAB/R2018b/bin/matlab'
 alias matlab2019a='/usr/local/MATLAB/R2019a/bin/matlab'
 alias matlab2019b='/usr/local/MATLAB/R2019b/bin/matlab'
 alias matlab2020a='/usr/local/MATLAB/R2020a/bin/matlab'
+alias matlab2020b='/usr/local/MATLAB/R2020b/bin/matlab'
+alias matlab2021a='/usr/local/MATLAB/R2021a/bin/matlab'
+alias matlab2021b='/usr/local/MATLAB/R2021b/bin/matlab'
+alias matlab2022a='/usr/local/MATLAB/R2022a/bin/matlab'
 alias format='astyle --style=linux --max-code-length=80'
 # Needed for vivado SDK
 export SWT_GTK3=0
@@ -40,6 +49,35 @@ compinit
 #export PATH="/home/tcollins/.pyenv/bin:$PATH"
 #eval "$(pyenv init -)"
 #eval "$(pyenv virtualenv-init -)"
+
+
+adiclone(){
+	git clone git@github.com:analogdevicesinc/$1
+	cd $1
+}
+alias aclone="adiclone"
+
+tclone(){
+	git clone git@github.com:tfcollins/$1
+	cd $1
+}
+alias tcclone="tclone"
+
+cmatlab(){
+	/usr/local/MATLAB/$1/bin/matlab
+}
+alias matlab="cmatlab"
+
+ssh_p(){
+sshpass -p analog ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" root@$1
+}
+alias ssha="ssh_p"
+
+alias vsetup="virtualenv venv ; source venv/bin/activate"
+
+alias rdp='rdesktop -u tcollins -d ANALOG -g 1920x1080 192.168.86.36'
+
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/tcollins/.oh-my-zsh"
@@ -110,6 +148,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
+plugins+=(zsh-pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -141,3 +180,14 @@ source $ZSH/oh-my-zsh.sh
 
 # added by travis gem
 [ -f /home/tcollins/.travis/travis.sh ] && source /home/tcollins/.travis/travis.sh
+
+source ~/git/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PATH=$PATH:$HOME/.poetry/bin
+
+CASE_SENSITIVE="true"
+
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=off

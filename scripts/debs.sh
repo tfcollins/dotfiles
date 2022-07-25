@@ -3,13 +3,14 @@ sudo apt install -y ./keybase_amd64.deb
 run_keybase
 rm -rf keybase_amd64.deb
 
-wget https://atom-installer.github.com/v1.44.0/atom-amd64.deb?s=1581443298&amp;ext=.deb -O atom.deb
-sudo apt install -y ./atom.deb
-rm -rf atom.deb
+wget https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 -O vscode.deb
+sudo apt install -y ./vscode.deb
+rm -rf vscode.deb
+
+sudo apt update
 
 sudo apt install -y python3-venv python3-pip
 
-sudo apt update
 sudo apt-get install -y \
     apt-transport-https \
     ca-certificates \
