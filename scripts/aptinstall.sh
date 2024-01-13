@@ -30,3 +30,7 @@ install screen
 install tmux
 install remmina
 
+# i3 stuff
+## Save workspaces
+# libanyevent-i3-perl
+
